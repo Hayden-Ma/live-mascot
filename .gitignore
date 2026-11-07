@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node / 前端构建产物
+node_modules/
+dist/
+.vite/
+
+# 运行日志与抓取控制台（可能含直播间观众昵称、聊天内容）
+logs/
+*.log
+tools/BarrageGrab/console*.txt
+tools/bg_*.txt
+
+# 登录态与密钥（务必不要提交）
+# 网易云 Cookie、MiniMax/ARK 等 API Key 都在 .env
+.env
+.env.*
+!.env.example
+# 抖音 Cookie（BarrageGrab 从 exe 同目录读取）
+cookie.txt
+tools/BarrageGrab/cookie*.txt
+*.cookie
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+id_rsa*
+
+# SSH 隧道脚本从 .env 读取主机/账号/密码，脚本本身可以入库
+# 本地临时文件
+scripts/_tmp/
+
+# 第三方工具：体积大 / 可再生成 / 含嵌套 git 仓库，不进仓库
+tools/dotnet-sdk/
+tools/dotnet-x86/
+# 带完整 bin/obj 构建产物的源码副本（内含 139MB exe 与嵌套 .git）
+tools/BarrageGrab-src/
+# 重复的旧版构建/运行副本与带嵌套 .git 的源码副本
+tools/BarrageGrab-orig-build/
+tools/BarrageGrab-orig-run/
+tools/BarrageGrab-orig-src/
+tools/netease-api/node_modules/
+tools/**/bin/
+tools/**/obj/
+tools/**/publish/
+# 第三方运行日志/抓包输出
+tools/**/console*.txt
+tools/**/bg_*.txt

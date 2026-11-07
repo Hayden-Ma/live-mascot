@@ -1,0 +1,6 @@
+/* 角色主题占位：接前端主题系统后，用这里的变量覆盖默认样式 */
+:root {
+  --bubble-bg: #ffffff;
+  --bubble-fg: #2b2333;
+  --accent: #ff9fc4;
+}

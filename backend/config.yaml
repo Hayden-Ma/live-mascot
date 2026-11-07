@@ -1,0 +1,112 @@
+app:
+  host: 0.0.0.0
+  port: 12121
+  character: yier
+
+barrage:
+  # fake | barragegrab
+  source: barragegrab
+  barragegrab:
+    # BarrageGrab 本地 WebSocket 地址
+    ws_url: ws://127.0.0.1:8888
+    reconnect_seconds: 5
+    # 首次接入建议开 true，打印原始消息核对字段；稳定后可关
+    debug_raw: false
+    # 是否处理点赞消息（前端爱心 + 主播语音道谢）
+    handle_like: true
+    # 超过多少秒没收到任何消息就主动重连（Fleck 偶发停止推送）
+    receive_timeout_seconds: 45
+
+llm:
+  # stub | openai
+  provider: openai
+  openai:
+    # 任意 OpenAI Chat Completions 兼容服务（DeepSeek / 豆包方舟 / Ollama / vLLM）
+    # 当前为 GPU 服务器上自部署的 Ollama（qwen2.5:1.5b-instruct），
+    # 服务只监听服务器 127.0.0.1:11434，用 ssh 隧道映射到本地同名端口
+    base_url: http://127.0.0.1:11434/v1
+    model: qwen2.5:1.5b-instruct
+    # 本地 Ollama 无需鉴权，留空即不发送 Authorization 头
+    api_key_env: ""
+    temperature: 0.8
+    max_tokens: 200
+
+tts:
+  # silent | cosyvoice | volcengine | minimax | gpt_sovits
+  engine: cosyvoice
+  minimax:
+    base_url: https://api.minimax.chat/v1/t2a_v2
+    model: speech-2.8-turbo
+    # 换成你在 MiniMax 平台创建的音色 ID
+    voice_id: female-shaonv
+    speed: 1.0
+    api_key_env: MINIMAX_API_KEY
+    group_id_env: MINIMAX_GROUP_ID
+    # 节流：并发数与最小请求间隔，避免触发 RPM 限流
+    concurrency: 1
+    min_interval: 0.8
+    max_retries: 2
+  cosyvoice:
+    # GPU 服务器上的 CosyVoice2 服务（scripts/remote_tts_server.py）
+    # 端口未对外开放，用 node scripts/ssh_tunnel.cjs 映射到本地
+    base_url: http://127.0.0.1:45100
+    voice: yier
+    speed: 1.0
+
+pipeline:
+  # 同一用户普通弹幕的最小间隔（秒）
+  user_cooldown_seconds: 8
+  # 待处理队列上限，超出后丢弃普通弹幕（礼物不受限）
+  max_queue: 8
+  # 入队超过该秒数仍未处理的普通弹幕直接丢弃
+  stale_drop_seconds: 6
+  # 同一观众在窗口内连送同种礼物：只播放/道谢一次，数量合并显示
+  gift_merge_seconds: 5
+  # 是否欢迎进场用户
+  handle_enter: true
+  # 进场互动：真实直播间进场很密集，前端每条都收，但最多每 N 秒展示一条欢迎条
+  enter_display_interval_seconds: 2
+  # 主播语音欢迎的最小间隔（秒）；关掉 welcome_voice 则只保留前端欢迎条
+  welcome_voice: true
+  welcome_cooldown_seconds: 45
+  # 点赞互动：前端全部收到（爱心动画），主播语音道谢按下面间隔限流
+  like_voice: true
+  like_thank_interval_seconds: 60
+
+stickers:
+  # 关键词互动：弹幕里出现图片名（或同名目录下 keywords.yaml 里的别名）时，
+  # 像收到礼物一样把 characters/<角色>/stickers/<dir>/ 下的图片推给前端播放
+  enabled: true
+  keyword:
+    # 相对 characters/<角色>/stickers/ 的图片目录，只认这个目录里的图片
+    dir: tigger
+    # 两次触发的最小间隔（秒），避免弹幕刷屏时表情包连播
+    cooldown_seconds: 4
+
+music:
+  # 是否启用点歌
+  enabled: true
+  # 歌曲缓存目录（目录不存在会自动创建，手动放入的音频也会被索引）
+  cache_dir: E:/stream-music
+  # 自部署 NeteaseCloudMusicApi 地址
+  api_base: http://127.0.0.1:3000
+  # 后端启动时自动拉起网易云接口（仅本机 api_base 生效；已在运行则跳过）
+  auto_start: true
+  # 网易云登录 Cookie 的环境变量名（在 .env 里填写，用于解析 VIP/高音质歌曲）
+  cookie_env: NETEASE_COOKIE
+  # 网易云音质：standard | higher | exhigh | lossless
+  level: exhigh
+  # 同一观众两次点歌的最小间隔（秒）
+  user_cooldown_seconds: 30
+  # 每位观众最多同时排队的歌数
+  per_user_pending: 1
+  # 点歌队列上限（不含正在播放）
+  max_queue: 8
+  # 单曲时长上限（秒），超长歌曲拒绝点播
+  max_duration_seconds: 420
+  # 搜索返回条数，用于挑选最匹配的一首
+  search_limit: 5
+  # 本地曲库模糊匹配阈值（0~1，越大越严格）
+  local_match_threshold: 0.55
+  # 缓存歌曲上限，超出后按最久未使用淘汰
+  max_cache_songs: 200

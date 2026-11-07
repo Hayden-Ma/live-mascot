@@ -1,0 +1,22 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "frontend",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "frontend", "run", "dev"],
+      "port": 5173
+    },
+    {
+      "name": "backend",
+      "runtimeExecutable": ".venv/Scripts/python.exe",
+      "runtimeArgs": ["-m", "uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "12121"],
+      "port": 12121
+    },
+    {
+      "name": "app",
+      "url": "http://localhost:12121",
+      "port": 12121
+    }
+  ]
+}

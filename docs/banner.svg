@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" role="img" aria-label="Live Mascot">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff7f3"/>
+      <stop offset="0.55" stop-color="#ffe9f0"/>
+      <stop offset="1" stop-color="#ffe0ea"/>
+    </linearGradient>
+    <linearGradient id="phone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fffdfb"/>
+      <stop offset="1" stop-color="#ffe6d6"/>
+    </linearGradient>
+    <linearGradient id="title" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5b4350"/>
+      <stop offset="1" stop-color="#c2547f"/>
+    </linearGradient>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="26"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="320" fill="url(#bg)"/>
+
+  <circle cx="120" cy="300" r="120" fill="#ffd0e0" opacity="0.5" filter="soft"/>
+  <circle cx="1140" cy="20" r="150" fill="#ffe0bd" opacity="0.4" filter="soft"/>
+
+  <g fill="#ff8db5">
+    <path d="M12 21s-8-4.9-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.1-8 11-8 11z" transform="translate(792 44) scale(1.1)" opacity="0.75"/>
+    <path d="M12 21s-8-4.9-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.1-8 11-8 11z" transform="translate(1064 240) scale(0.8)" opacity="0.65"/>
+    <path d="M12 21s-8-4.9-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.1-8 11-8 11z" transform="translate(852 268) scale(0.55)" opacity="0.5"/>
+    <path d="M12 21s-8-4.9-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6.1-8 11-8 11z" transform="translate(742 120) scale(0.45)" opacity="0.45"/>
+    <circle cx="880" cy="296" r="5" opacity="0.55"/>
+    <circle cx="838" cy="34" r="4" opacity="0.55"/>
+    <circle cx="1128" cy="118" r="4" opacity="0.45"/>
+  </g>
+
+  <g>
+    <rect x="58" y="76" width="200" height="34" rx="17" fill="#ffffff" opacity="0.85"/>
+    <text x="80" y="99" font-family="'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="15" font-weight="700" letter-spacing="2" fill="#c2547f">AI · LIVE · MASCOT</text>
+
+    <text x="62" y="176" font-family="'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="68" font-weight="800" fill="url(#title)">Live Mascot</text>
+
+    <text x="64" y="216" font-family="'PingFang SC', 'Microsoft YaHei', 'Segoe UI', sans-serif" font-size="26" font-weight="600" fill="#6b5560">抖音直播间 · AI 虚拟主播</text>
+
+    <text x="64" y="262" font-family="'PingFang SC', 'Microsoft YaHei', 'Segoe UI', sans-serif" font-size="18" fill="#8f7680">弹幕接入 · 人设对话 · 语音播报 · 点歌 · 礼物感谢 · 表情互动</text>
+  </g>
+
+  <g>
+    <rect x="916" y="28" width="196" height="264" rx="30" fill="#ffe3ec" opacity="0.75"/>
+    <rect x="926" y="38" width="176" height="244" rx="24" fill="url(#phone)"/>
+    <circle cx="1014" cy="170" r="54" fill="#ffffff"/>
+    <circle cx="964" cy="126" r="20" fill="#a97b63"/>
+    <circle cx="1064" cy="126" r="20" fill="#a97b63"/>
+    <circle cx="994" cy="166" r="6" fill="#5b4350"/>
+    <circle cx="1034" cy="166" r="6" fill="#5b4350"/>
+    <circle cx="984" cy="186" r="9" fill="#ffb3c9" opacity="0.9"/>
+    <circle cx="1044" cy="186" r="9" fill="#ffb3c9" opacity="0.9"/>
+    <path d="M1004 184q10 8 20 0" stroke="#5b4350" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <rect x="946" y="246" width="136" height="26" rx="13" fill="#ffffff" opacity="0.95"/>
+    <circle cx="998" cy="259" r="4" fill="#ffd0de"/>
+    <circle cx="1014" cy="259" r="4" fill="#ff8db5"/>
+    <circle cx="1030" cy="259" r="4" fill="#ffb3c9"/>
+  </g>
+</svg>
